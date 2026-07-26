@@ -27,8 +27,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build \
-            -t $REGISTRY/$IMAGE_NAME:${{ github.sha }} \
+          docker build \           
             -t $REGISTRY/$IMAGE_NAME:Dev \
             startbootstrap-grayscale-master
 
