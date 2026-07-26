@@ -12,6 +12,9 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -30,6 +33,16 @@ jobs:
           docker build \
             -t $IMAGE_NAME:latest \
             startbootstrap-grayscale-master
+
+      - name: Scan image with Trivy
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: ${{ env.IMAGE_NAME }}:latest
+          format: table
+          exit-code: 1
+          ignore-unfixed: true
+          vuln-type: os,library
+          severity: CRITICAL,HIGH
 
       - name: Tag Docker image
         run: |
