@@ -31,7 +31,7 @@ jobs:
       # Login to ACR
       - name: Login to ACR
         run: |
-          az acr login --name $ACR_NAME
+          az acr login --name devnitoracr001
 
       # Build Docker image
       - name: Build Docker image
