@@ -6,7 +6,7 @@ on:
 env:
   REGISTRY: devnitoracr001.azurecr.io
   ACR_NAME: devnitoracr001
-  IMAGE_NAME: starbootgrey
+  IMAGE_NAME: starbootgreywithtrivyscan
 
 jobs:
   build-and-push:
