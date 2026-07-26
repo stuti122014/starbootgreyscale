@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
    
 env:
-  REGISTRY: myacr.azurecr.io
-  IMAGE_NAME: myapp
+  REGISTRY: devnitoracr001.azurecr.io
+  IMAGE_NAME: starbootgrey
 
 jobs:
   build-and-push:
@@ -32,11 +32,11 @@ jobs:
         run: |
           docker build \
             -t $REGISTRY/$IMAGE_NAME:${{ github.sha }} \
-            -t $REGISTRY/$IMAGE_NAME:latest \
-            .
+            -t $REGISTRY/$IMAGE_NAME:Dev \
+            startbootstrap-grayscale-master
 
       # 5. Push Docker image to ACR
       - name: Push Docker image
         run: |
           docker push $REGISTRY/$IMAGE_NAME:${{ github.sha }}
-          docker push $REGISTRY/$IMAGE_NAME:latest
+          docker push $REGISTRY/$IMAGE_NAME:Dev
