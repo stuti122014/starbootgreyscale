@@ -33,5 +33,5 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker push $REGISTRY/$IMAGE_NAME:${{ github.sha }}
+          
           docker push $REGISTRY/$IMAGE_NAME:Dev
